@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:name=".MatuleMeApp"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.MatuleMe"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".presentation.deliveryaddresslist.DeliveryAddressListActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.checkout.CheckoutActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.product.ProductActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.searchresult.SearchResultActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.search.SearchActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.orders.OrdersActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.category.CategoryActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.cart.CartActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.menu.MenuActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.main.MainActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.inputpassword.InputPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.passwordreset.PasswordResetActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.otpverify.OTPVerifyActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.register.RegisterActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.login.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.splash.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="locked"
+            android:theme="@style/Theme.MatuleMe.SplashScreen"
+            tools:ignore="DiscouragedApi">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

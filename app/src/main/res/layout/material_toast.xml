@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="#FFFFFFFF"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp"
+    app:strokeColor="#20000000"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_toast_icon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:padding="12dp"
+            android:scaleType="center"
+            android:background="@color/accent_color"
+            app:shapeAppearance="@style/CircularImageView"
+            app:tint="@android:color/white" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_toast_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center"
+            tools:text="Проверьте ваш Email" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_toast_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:textColor="@color/sub_text_dark_color"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center"
+            tools:text="Мы отправили вам код подтверждения на почту!" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

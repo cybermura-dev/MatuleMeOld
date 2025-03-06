@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shimmer_layout"
+    android:layout_width="160dp"
+    android:layout_height="170dp"
+    app:shimmer_base_color="#EBEBEB"
+    app:shimmer_highlight_color="@color/white"
+    app:shimmer_auto_start="true"
+    app:shimmer_direction="left_to_right">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/shimmer_btn_add_to_favorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/shimmer_circle_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/shimmer_iv_product"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/shimmer_rectangle_shape"
+                app:layout_constraintBottom_toTopOf="@+id/shimmer_tv_best_seller"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/shimmer_btn_add_to_favorite"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/shimmer_tv_best_seller"
+                android:layout_width="80dp"
+                android:layout_height="12dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/shimmer_rectangle_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/shimmer_tv_title"
+                android:layout_width="120dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/shimmer_rectangle_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shimmer_tv_best_seller"
+                app:layout_constraintVertical_bias="0.15" />
+
+            <View
+                android:id="@+id/shimmer_tv_price"
+                android:layout_width="80dp"
+                android:layout_height="14dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/shimmer_rectangle_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shimmer_tv_title"
+                app:layout_constraintVertical_bias="1" />
+
+            <View
+                android:id="@+id/shimmer_add_to_cart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shimmer_circle_shape"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.facebook.shimmer.ShimmerFrameLayout>

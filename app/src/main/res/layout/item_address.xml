@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textfield.TextInputLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/til_address"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    app:boxBackgroundColor="@color/white"
+    app:layout_constraintTop_toBottomOf="@id/tv_phone"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:endIconDrawable="@drawable/ic_edit"
+    app:endIconTint="@color/accent_color"
+    style="@style/TextInputLayoutStyle">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_address"
+        android:maxLines="1"
+        android:ellipsize="end"
+        style="@style/TextInputEditTextStyle" />
+</com.google.android.material.textfield.TextInputLayout>

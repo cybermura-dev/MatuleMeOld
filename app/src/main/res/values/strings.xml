@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- =============== [ Общие / Global ] =============== -->
+    <string name="app_name">MatuleMe</string>
+    <string name="no_data">Не указано</string>
+    <string name="all">\u003cu>Все\u003c/u></string>
+    <string name="open">Открыть</string>
+    <string name="price_format">₽%1$.2f</string>
+    <string name="product_info">Информация о товаре</string>
+    <string name="best_seller">BEST SELLER</string>
+
+    <!-- =============== [ Приветствие / Onboarding ] =============== -->
+    <string name="welcome">Добро\nпожаловать</string>
+    <string name="start_journey">Начнем\nпутешествие</string>
+    <string name="collection_description">Умная, великолепная и модная коллекция</string>
+    <string name="click_on_next">Нажмите на кнопку "Начать", чтобы войти или зарегистрироваться!</string>
+    <string name="next">Далее</string>
+    <string name="start">Начать</string>
+    <string name="view_on_map">Посмотреть на карте</string>
+
+    <!-- =============== [ Аутентификация / Auth ] =============== -->
+    <string name="register_title">Регистрация</string>
+    <string name="successfully_register_title">Успешная регистрация</string>
+    <string name="successfully_register_message">Вы были успешно зарегистрированы в системе! Вы будете перенаправлены на страницу для подтверждения почты!</string>
+    <string name="successfully_login_title">Успешный вход</string>
+    <string name="successfully_login_message">Вы успешно вошли в аккаунт!</string>
+    <string name="successfully_logout_title">Успешный выход</string>
+    <string name="successfully_logout_message">Будем ждать вас еще!</string>
+    <string name="full_name">Ваше имя</string>
+    <string name="privacy_policy">Даю согласие на обработку персональных данных</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_in">Войти</string>
+    <string name="register_prompt_underlined">\u003cu>Вы впервые? Создать пользователя\u003c/u></string>
+    <string name="login_prompt_underlined">\u003cu>Есть аккаунт? Войти\u003c/u></string>
+    <string name="greeting">Привет!</string>
+    <string name="auth_prompt">Заполните свои данные</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="full_name_prompt">%1$s %2$s</string>
+
+    <!-- =============== [ Ошибки / Errors ] =============== -->
+    <string name="invalid_email">Некорректный адрес электронной почты!</string>
+    <string name="empty_password">Пароль не может быть пустым!</string>
+    <string name="invalid_credentials">Неверный Email или пароль!</string>
+    <string name="no_internet_connection">Отсутствует соединение с интернетом!</string>
+    <string name="unknown_error">Неизвестная ошибка!</string>
+    <string name="password_min_length">Пароль должен содержать минимум 8 символов!</string>
+    <string name="email_already_registered">Email уже зарегистрирован!</string>
+    <string name="personal_data_consent_request">Пожалуйста, подтвердите согласие на использование персональных данных!</string>
+
+    <!-- =============== [ Сброс пароля / Password Reset ] =============== -->
+    <string name="password_reset_description">Пожалуйста, проверьте свою электронную почту, чтобы увидеть код подтверждения</string>
+    <string name="password_reset">Сброс пароля</string>
+    <string name="password_reset_code">Код восстановления</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="new_password_verify">Подтверждение нового пароля</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="change_password_title">Смена пароля</string>
+    <string name="change_password_prompt">Введите новый пароль и подтвердите его</string>
+    <string name="password_recovery">Восстановление пароля</string>
+    <string name="forgot_password">Забыл пароль</string>
+    <string name="forgot_password_underlined">\u003cu>Забыл пароль\u003c/u></string>
+    <string name="reset_password_hint">Введите свою учетную запись\nдля сброса</string>
+    <string name="send">Отправить</string>
+    <string name="send_again">Отправить заново</string>
+    <string name="write_email">Введите свою почту!</string>
+    <string name="check_email_title">Проверьте вашу электронную почту</string>
+    <string name="verify_email_sent">Мы отправили код подтверждения аккаунта на вашу электронную почту.</string>
+    <string name="reset_password_sent">Мы отправили код восстановления пароля на вашу электронную почту.</string>
+    <string name="successfully_verify_title">Успешная верификация</string>
+    <string name="successfully_verify_message">Вы успешно прошли верификацию электронной почты! Вы будете перенаправлены на страницу авторизации!</string>
+    <string name="successfully_reset_title">Успешная верификация</string>
+    <string name="successfully_reset_message">Вы будете перенаправлены на страницу сброса пароля!</string>
+
+    <!-- =============== [ OTP / Verification ] =============== -->
+    <string name="otp_verify">OTP проверка</string>
+    <string name="otp_code">OTP код</string>
+
+    <!-- =============== [ Магазин / Shop ] =============== -->
+    <string name="home">Главная</string>
+    <string name="profile">Профиль</string>
+    <string name="all_shoes">Все</string>
+    <string name="search">Поиск</string>
+    <string name="search_title">Поиск</string>
+    <string name="categories">Категории</string>
+    <string name="popular">Популярное</string>
+    <string name="sales">Акции</string>
+    <string name="favorite">Избранное</string>
+    <string name="cart">Корзина</string>
+    <string name="items">товара</string>
+    <string name="subtotal">Сумма</string>
+    <string name="delivery">Доставка</string>
+    <string name="total">Итого</string>
+    <string name="checkout">Оформить заказ</string>
+    <string name="add_to_cart">В корзину</string>
+    <string name="added_to_cart">В корзине</string>
+    <string name="order_success">Вы успешно оформили заказ</string>
+    <string name="back_to_shop">Вернуться к покупкам</string>
+    <string name="free">Бесплатно</string>
+    <string name="loading">Загрузка</string>
+
+    <!-- =============== [ Профиль / Profile ] =============== -->
+    <string name="edit_profile_success_title">Успешное изменение данных</string>
+    <string name="edit_profile_success_message">Измененные данные были успешно сохранены!</string>
+    <string name="edit_profile_failed_title">Не удалось изменить данные</string>
+    <string name="edit_profile_failed_message">При изменении данных произошла ошибка. Пожалуйста, повторите попытку.</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="save">Сохранить</string>
+    <string name="orders">Заказы</string>
+    <string name="notifications">Уведомления</string>
+    <string name="settings">Настройки</string>
+    <string name="sign_out">Выйти</string>
+    <string name="change_photo">Изменить фото профиля</string>
+
+    <!-- =============== [ Уведомления / Notifications ] =============== -->
+    <string name="new_notification">Новое</string>
+    <string name="minutes_ago">минут назад</string>
+    <string name="seconds_ago">секунд назад</string>
+    <string name="hours_ago">часов назад</string>
+    <string name="days_ago">дней назад</string>
+    <string name="recent">Недавний</string>
+    <string name="yesterday">Вчера</string>
+
+    <!-- =============== [ Контактная информация / Contact ] =============== -->
+    <string name="contact_info">Контактная информация</string>
+    <string name="address">Адрес</string>
+    <string name="addresses">Адреса</string>
+    <string name="phone">Телефон</string>
+    <string name="payment_method">Способ оплаты</string>
+
+    <string name="failed_title">Произошла ошибка</string>
+    <string name="failed_message">Произошла неизвестная ошибка! Пожалуйста, обратитесь с проблемой к администратору!</string>
+    <string name="install_app_maps">Установите приложение карт (Google Maps, Яндекс.Карты или 2ГИС)</string>
+    <string name="open_address_in">Открыть адрес в...</string>
+</resources>
