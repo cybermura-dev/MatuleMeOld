@@ -9,8 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.takeshiko.matuleme.R
-import ru.takeshiko.matuleme.data.adapters.CategoryCardShimmerAdapter
-import ru.takeshiko.matuleme.data.adapters.ProductCardShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.CategoryShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.ProductShimmerAdapter
 import ru.takeshiko.matuleme.data.local.AppPreferencesManager
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.data.utils.setupAdaptiveGridLayout
@@ -28,8 +28,8 @@ class CategoryActivity : AppCompatActivity() {
             SupabaseClientManager.getInstance()
         )
     }
-    private lateinit var shimmerCategoryAdapter: CategoryCardShimmerAdapter
-    private lateinit var shimmerProductAdapter: ProductCardShimmerAdapter
+    private lateinit var shimmerCategoryAdapter: CategoryShimmerAdapter
+    private lateinit var shimmerProductAdapter: ProductShimmerAdapter
 
     private var selectedCategoryId: String? = null
 
@@ -40,8 +40,8 @@ class CategoryActivity : AppCompatActivity() {
         with (binding) {
             setContentView(root)
 
-            shimmerCategoryAdapter = CategoryCardShimmerAdapter(6)
-            shimmerProductAdapter = ProductCardShimmerAdapter(6)
+            shimmerCategoryAdapter = CategoryShimmerAdapter(6)
+            shimmerProductAdapter = ProductShimmerAdapter(6)
 
             val categoryId = intent.getStringExtra("category_id")!!
             selectedCategoryId = categoryId
@@ -65,13 +65,15 @@ class CategoryActivity : AppCompatActivity() {
                 adapter = shimmerCategoryAdapter
             }
 
-            rvProducts.setupAdaptiveGridLayout(
-                adapter = shimmerProductAdapter,
-                cardWidthDp = 160,
-                spacingDp = 16
-            )
+            rvProducts.apply {
+                setupAdaptiveGridLayout(
+                    adapter = shimmerProductAdapter,
+                    cardWidthDp = 160,
+                    spacingDp = 16
+                )
+            }
 
-            val productCardAdapter = ProductCardAdapter(
+            val productCardAdapter = ProductAdapter(
                 onAddToFavoriteClick = { productId ->
                     viewModel.toggleFavorite(productId)
                 },

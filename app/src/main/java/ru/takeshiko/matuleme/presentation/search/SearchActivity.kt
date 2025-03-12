@@ -7,7 +7,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.takeshiko.matuleme.data.adapters.SearchQueryCardShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.SearchQueryShimmerAdapter
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.databinding.ActivitySearchBinding
 import ru.takeshiko.matuleme.domain.models.result.DataResult
@@ -19,7 +19,8 @@ class SearchActivity : AppCompatActivity() {
     private val viewModel: SearchViewModel by viewModels {
         SearchViewModelFactory(SupabaseClientManager.getInstance())
     }
-    private lateinit var shimmerAdapter: SearchQueryCardShimmerAdapter
+    private lateinit var shimmerAdapter: SearchQueryShimmerAdapter
+    private lateinit var adapter: SearchQueryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,18 @@ class SearchActivity : AppCompatActivity() {
         with (binding) {
             setContentView(root)
 
-            shimmerAdapter = SearchQueryCardShimmerAdapter(5)
+            shimmerAdapter = SearchQueryShimmerAdapter(5)
+            adapter = SearchQueryAdapter(
+                onItemClick = { query ->
+                    startActivity(Intent(this@SearchActivity, SearchResultActivity::class.java).apply {
+                        putExtra("query", query.query)
+                    })
+                    finish()
+                },
+                onDeleteClick = { query ->
+                    viewModel.deleteQuery(query.query)
+                }
+            )
 
             rvSearchQueries.apply {
                 layoutManager = LinearLayoutManager(this@SearchActivity)
@@ -36,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
             }
 
             etSearch.setOnEditorActionListener { _, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_SEARCH ||
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
                     (event != null && event.keyCode == android.view.KeyEvent.KEYCODE_ENTER)) {
 
                     val query = etSearch.text.toString().trim()
@@ -55,13 +67,7 @@ class SearchActivity : AppCompatActivity() {
             viewModel.searchQueriesResult.observe(this@SearchActivity) { result ->
                 when (result) {
                     is DataResult.Success -> {
-                        rvSearchQueries.adapter = shimmerAdapter
-                        val adapter = SearchQueryCardAdapter(result.data) { query ->
-                            startActivity(Intent(this@SearchActivity, SearchResultActivity::class.java).apply {
-                                putExtra("query", query.query)
-                            })
-                            finish()
-                        }
+                        adapter.submitList(result.data)
                         rvSearchQueries.adapter = adapter
                     }
                     is DataResult.Error -> Log.d(javaClass.name, result.message)

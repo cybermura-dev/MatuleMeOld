@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.cart
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,7 +34,6 @@ class CartViewModel(
 
     private val deliveryCost = 0.0
 
-
     fun loadCartItems() {
         viewModelScope.launch {
             supabaseClientManager.auth.currentUserOrNull()?.id?.let { userId ->
@@ -52,7 +52,7 @@ class CartViewModel(
                     is DataResult.Error -> _cartItemsResult.value = DataResult.Error(cartItemsResult.message)
                 }
             } ?: run {
-                _cartItemsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -90,7 +90,7 @@ class CartViewModel(
                     }
                 }
             } ?: run {
-                _cartItemsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }

@@ -17,28 +17,25 @@ class ProductCategoryCardAdapter(
 
     inner class ProductCategoryViewHolder(private val binding: ItemCategoryBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ProductCategory) {
-            with (binding) {
-                tvCategory.text = item.name
 
-                val context = itemView.context
-                val selectedColor = ContextCompat.getColor(context, R.color.accent_color)
-                val defaultColor = ContextCompat.getColor(context, R.color.white)
-                val selectedTextColor = ContextCompat.getColor(context, R.color.white)
-                val defaultTextColor = ContextCompat.getColor(context, R.color.black)
+        fun bind(item: ProductCategory) = with (binding) {
+            tvCategory.text = item.name
 
-                if (item.id == selectedCategoryId) {
-                    cvCategory.setCardBackgroundColor(selectedColor)
-                    tvCategory.setTextColor(selectedTextColor)
-                } else {
-                    cvCategory.setCardBackgroundColor(defaultColor)
-                    tvCategory.setTextColor(defaultTextColor)
-                }
+            val context = itemView.context
+            val selectedColor = ContextCompat.getColor(context, R.color.accent_color)
+            val defaultColor = ContextCompat.getColor(context, R.color.white)
+            val selectedTextColor = ContextCompat.getColor(context, R.color.white)
+            val defaultTextColor = ContextCompat.getColor(context, R.color.black)
 
-                itemView.setOnClickListener {
-                    onItemClick(item)
-                }
+            if (item.id == selectedCategoryId) {
+                cvCategory.setCardBackgroundColor(selectedColor)
+                tvCategory.setTextColor(selectedTextColor)
+            } else {
+                cvCategory.setCardBackgroundColor(defaultColor)
+                tvCategory.setTextColor(defaultTextColor)
             }
+
+            itemView.setOnClickListener { onItemClick(item) }
         }
     }
 

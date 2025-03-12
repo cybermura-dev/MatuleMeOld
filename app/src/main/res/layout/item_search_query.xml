@@ -26,9 +26,23 @@
         android:textColor="@color/text_color"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_delete"
         app:layout_constraintStart_toEndOf="@id/iv_clock"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         tools:text="Search query" />
+
+    <ImageButton
+        android:id="@+id/iv_delete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_cross"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/accent_color" />
 </androidx.constraintlayout.widget.ConstraintLayout>

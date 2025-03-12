@@ -9,4 +9,5 @@ interface UserCartItemRepository {
     suspend fun addCartItem(item: UserCartItem): DataResult<UserCartItem>
     suspend fun updateQuantity(itemId: String, newQuantity: Int): DataResult<UserCartItem>
     suspend fun removeCartItem(userId: String, itemId: String) : DataResult<String>
+    suspend fun removeAllByUserId(userId: String) : DataResult<String>
 }

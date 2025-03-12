@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.menu
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,14 +22,12 @@ class MenuViewModel(
 
     private val authRepository = AuthRepositoryImpl(supabaseClientManager)
 
-    init { loadUserData() }
-
-    private fun loadUserData() {
+    fun loadUserData() {
         viewModelScope.launch {
             supabaseClientManager.auth.currentUserOrNull()?.let { user ->
                 _userResult.value = DataResult.Success(user)
             } ?: run {
-                _userResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -43,9 +42,6 @@ class MenuViewModel(
     }
 
     fun getAvatarFromUrl(userId: String) : String {
-        return BuildConfig.SUPABASE_URL +
-                "/storage/v1/object/public/avatars//" +
-                userId +
-                ".png"
+        return "${BuildConfig.SUPABASE_URL}/storage/v1/object/public/avatars/$userId.png"
     }
 }

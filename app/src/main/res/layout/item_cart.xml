@@ -121,7 +121,6 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/raleway_bold"
                     tools:text="Nike ACG Air Zoom" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -131,7 +130,6 @@
                     android:layout_marginTop="12dp"
                     android:textSize="14sp"
                     android:textColor="@color/text_color"
-                    android:fontFamily="@font/raleway_semibold"
                     tools:text="₽7599.99" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -140,7 +138,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textColor="@color/error_color"
-                    android:fontFamily="@font/raleway_semibold"
                     tools:text="₽5999.99" />
             </LinearLayout>
         </LinearLayout>

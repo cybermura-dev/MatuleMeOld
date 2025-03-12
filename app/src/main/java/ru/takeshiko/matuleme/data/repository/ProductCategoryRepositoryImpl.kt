@@ -1,7 +1,6 @@
 package ru.takeshiko.matuleme.data.repository
 
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
-import ru.takeshiko.matuleme.domain.models.database.Product
 import ru.takeshiko.matuleme.domain.models.database.ProductCategory
 import ru.takeshiko.matuleme.domain.models.result.DataResult
 import ru.takeshiko.matuleme.domain.repository.ProductCategoryRepository

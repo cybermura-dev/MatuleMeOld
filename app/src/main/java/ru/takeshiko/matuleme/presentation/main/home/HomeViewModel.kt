@@ -82,7 +82,6 @@ class HomeViewModel(
                             )
 
                             val top5Products = sortedProducts.take(5)
-
                             _popularProductsResult.value = DataResult.Success(top5Products)
                         }
                         is DataResult.Error -> {
@@ -107,7 +106,7 @@ class HomeViewModel(
                     is DataResult.Error -> Log.e(javaClass.name, "Error loading favorites!")
                 }
             } ?: run {
-                _popularProductsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -122,7 +121,7 @@ class HomeViewModel(
                     is DataResult.Error -> Log.e(javaClass.name, "Error loading cart!")
                 }
             } ?: run {
-                _popularProductsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -142,7 +141,7 @@ class HomeViewModel(
                     )
                 }
             } ?: run {
-                _popularProductsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadFavorites()
         }
@@ -164,7 +163,7 @@ class HomeViewModel(
                     )
                 }
             } ?: run {
-                _popularProductsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadCartItems()
         }

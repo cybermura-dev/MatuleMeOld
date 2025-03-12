@@ -2,4 +2,8 @@
 <resources>
     <dimen name="btn_cart_size">256dp</dimen>
     <dimen name="swipe_offset">270dp</dimen>
+    <dimen name="notification_badge_size">24dp</dimen>
+    <dimen name="notification_badge_text_size">16sp</dimen>
+    <dimen name="cart_badge_size">24dp</dimen>
+    <dimen name="cart_badge_text_size">16sp</dimen>
 </resources>

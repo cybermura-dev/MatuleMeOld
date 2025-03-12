@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.main.notifications
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,23 +22,43 @@ class NotificationsViewModel(
 
     fun getAllNotifications() {
         viewModelScope.launch {
-            val user = supabaseClientManager.auth.currentUserOrNull()
-            if (user != null) {
-                when (val result = userNotificationRepository.getByUserId(user.id)) {
+            supabaseClientManager.auth.currentUserOrNull()?.id?.let { userId ->
+                when (val result = userNotificationRepository.getByUserId(userId)) {
                     is DataResult.Success -> {
-                        val sortedNotifications = result.data.sortedByDescending { it.createdAt }
+                        val sortedNotifications = result.data
+                            .sortedWith(
+                                compareBy<UserNotification> { it.isRead }
+                                    .thenByDescending { it.createdAt }
+                            )
                         _notificationsResult.value = DataResult.Success(sortedNotifications)
                     }
                     is DataResult.Error -> _notificationsResult.value = DataResult.Error(result.message)
                 }
+            } ?: run {
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
 
+
     fun markAsRead(notificationId: String) {
         viewModelScope.launch {
             when (val result = userNotificationRepository.markAsRead(notificationId)) {
-                is DataResult.Success -> getAllNotifications()
+                is DataResult.Success -> {
+                    _notificationsResult.value = _notificationsResult.value?.let { dataResult ->
+                        if (dataResult is DataResult.Success) {
+                            val updatedList = dataResult.data.map {
+                                if (it.id == notificationId) it.copy(isRead = true) else it
+                            }.sortedWith(
+                                compareBy<UserNotification> { it.isRead }
+                                    .thenByDescending { it.createdAt }
+                            )
+                            DataResult.Success(updatedList)
+                        } else {
+                            dataResult
+                        }
+                    }
+                }
                 is DataResult.Error -> _notificationsResult.value = DataResult.Error(result.message)
             }
         }

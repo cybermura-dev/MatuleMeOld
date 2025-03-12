@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- =============== [ Общие / Global ] =============== -->
+    <!-- 1. Общие строки и базовая информация -->
     <string name="app_name">MatuleMe</string>
     <string name="no_data">Не указано</string>
-    <string name="all">\u003cu>Все\u003c/u></string>
+    <string name="all"><u>Все</u></string>
     <string name="open">Открыть</string>
     <string name="price_format">₽%1$.2f</string>
     <string name="product_info">Информация о товаре</string>
     <string name="best_seller">BEST SELLER</string>
+    <string name="loading">Загрузка</string>
+    <string name="primary">Основной</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="save">Сохранить</string>
+    <string name="free">Бесплатно</string>
+    <string name="view_on_map">Посмотреть на карте</string>
 
-    <!-- =============== [ Приветствие / Onboarding ] =============== -->
+    <!-- 2. Экраны приветствия и онбординг -->
     <string name="welcome">Добро\nпожаловать</string>
     <string name="start_journey">Начнем\nпутешествие</string>
     <string name="collection_description">Умная, великолепная и модная коллекция</string>
     <string name="click_on_next">Нажмите на кнопку "Начать", чтобы войти или зарегистрироваться!</string>
     <string name="next">Далее</string>
     <string name="start">Начать</string>
-    <string name="view_on_map">Посмотреть на карте</string>
 
-    <!-- =============== [ Аутентификация / Auth ] =============== -->
+    <!-- 3. Авторизация и регистрация -->
     <string name="register_title">Регистрация</string>
+    <string name="full_name">Ваше имя</string>
+    <string name="privacy_policy">Даю согласие на обработку персональных данных</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_in">Войти</string>
+    <string name="register_prompt_underlined"><u>Вы впервые? Создать пользователя</u></string>
+    <string name="login_prompt_underlined"><u>Есть аккаунт? Войти</u></string>
+    <string name="greeting">Привет!</string>
+    <string name="auth_prompt">Заполните свои данные</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="full_name_prompt">%1$s %2$s</string>
+    <string name="sign_out">Выйти</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+
+    <!-- 4. Успешные и ошибочные статусы (авторизация) -->
     <string name="successfully_register_title">Успешная регистрация</string>
     <string name="successfully_register_message">Вы были успешно зарегистрированы в системе! Вы будете перенаправлены на страницу для подтверждения почты!</string>
     <string name="successfully_login_title">Успешный вход</string>
     <string name="successfully_login_message">Вы успешно вошли в аккаунт!</string>
     <string name="successfully_logout_title">Успешный выход</string>
     <string name="successfully_logout_message">Будем ждать вас еще!</string>
-    <string name="full_name">Ваше имя</string>
-    <string name="privacy_policy">Даю согласие на обработку персональных данных</string>
-    <string name="sign_up">Зарегистрироваться</string>
-    <string name="sign_in">Войти</string>
-    <string name="register_prompt_underlined">\u003cu>Вы впервые? Создать пользователя\u003c/u></string>
-    <string name="login_prompt_underlined">\u003cu>Есть аккаунт? Войти\u003c/u></string>
-    <string name="greeting">Привет!</string>
-    <string name="auth_prompt">Заполните свои данные</string>
-    <string name="email">Email</string>
-    <string name="password">Пароль</string>
-    <string name="full_name_prompt">%1$s %2$s</string>
-
-    <!-- =============== [ Ошибки / Errors ] =============== -->
     <string name="invalid_email">Некорректный адрес электронной почты!</string>
     <string name="empty_password">Пароль не может быть пустым!</string>
     <string name="invalid_credentials">Неверный Email или пароль!</string>
@@ -48,8 +56,10 @@
     <string name="password_min_length">Пароль должен содержать минимум 8 символов!</string>
     <string name="email_already_registered">Email уже зарегистрирован!</string>
     <string name="personal_data_consent_request">Пожалуйста, подтвердите согласие на использование персональных данных!</string>
+    <string name="failed_title">Произошла ошибка</string>
+    <string name="failed_message">Произошла неизвестная ошибка! Пожалуйста, обратитесь с проблемой к администратору!</string>
 
-    <!-- =============== [ Сброс пароля / Password Reset ] =============== -->
+    <!-- 5. Восстановление пароля -->
     <string name="password_reset_description">Пожалуйста, проверьте свою электронную почту, чтобы увидеть код подтверждения</string>
     <string name="password_reset">Сброс пароля</string>
     <string name="password_reset_code">Код восстановления</string>
@@ -60,11 +70,13 @@
     <string name="change_password_prompt">Введите новый пароль и подтвердите его</string>
     <string name="password_recovery">Восстановление пароля</string>
     <string name="forgot_password">Забыл пароль</string>
-    <string name="forgot_password_underlined">\u003cu>Забыл пароль\u003c/u></string>
+    <string name="forgot_password_underlined"><u>Забыл пароль</u></string>
     <string name="reset_password_hint">Введите свою учетную запись\nдля сброса</string>
     <string name="send">Отправить</string>
     <string name="send_again">Отправить заново</string>
     <string name="write_email">Введите свою почту!</string>
+
+    <!-- 6. Подтверждение почты и проверка -->
     <string name="check_email_title">Проверьте вашу электронную почту</string>
     <string name="verify_email_sent">Мы отправили код подтверждения аккаунта на вашу электронную почту.</string>
     <string name="reset_password_sent">Мы отправили код восстановления пароля на вашу электронную почту.</string>
@@ -72,12 +84,10 @@
     <string name="successfully_verify_message">Вы успешно прошли верификацию электронной почты! Вы будете перенаправлены на страницу авторизации!</string>
     <string name="successfully_reset_title">Успешная верификация</string>
     <string name="successfully_reset_message">Вы будете перенаправлены на страницу сброса пароля!</string>
-
-    <!-- =============== [ OTP / Verification ] =============== -->
     <string name="otp_verify">OTP проверка</string>
     <string name="otp_code">OTP код</string>
 
-    <!-- =============== [ Магазин / Shop ] =============== -->
+    <!-- 7. Основная навигация и меню -->
     <string name="home">Главная</string>
     <string name="profile">Профиль</string>
     <string name="all_shoes">Все</string>
@@ -87,34 +97,67 @@
     <string name="popular">Популярное</string>
     <string name="sales">Акции</string>
     <string name="favorite">Избранное</string>
+    <string name="orders">Заказы</string>
+    <string name="notifications">Уведомления</string>
+    <string name="settings">Настройки</string>
+    <string name="change_photo">Изменить фото профиля</string>
+
+    <!-- 8. Корзина и оформление заказа -->
     <string name="cart">Корзина</string>
     <string name="items">товара</string>
     <string name="subtotal">Сумма</string>
     <string name="delivery">Доставка</string>
     <string name="total">Итого</string>
     <string name="checkout">Оформить заказ</string>
+    <string name="confirm">Подтвердить</string>
     <string name="add_to_cart">В корзину</string>
     <string name="added_to_cart">В корзине</string>
-    <string name="order_success">Вы успешно оформили заказ</string>
-    <string name="back_to_shop">Вернуться к покупкам</string>
-    <string name="free">Бесплатно</string>
-    <string name="loading">Загрузка</string>
+    <string name="order_success_title">Успешное оформление заказа</string>
+    <string name="order_success_message">Вы успешно оформили заказ!</string>
 
-    <!-- =============== [ Профиль / Profile ] =============== -->
+    <!-- 9. Управление адресами -->
+    <string name="delivery_available">Доставка доступна</string>
+    <string name="make_primary_address">Сделать основным</string>
+    <string name="create_address">Добавить адрес</string>
+    <string name="edit_address">Изменить адрес</string>
+    <string name="save_address">Сохранить адрес</string>
+    <string name="address">Адрес</string>
+    <string name="addresses">Адреса</string>
+    <string name="successfully_save_address_title">Адрес успешно сохранен</string>
+    <string name="successfully_save_address_message">Ваш адрес был успешно сохранен!</string>
+    <string name="failed_save_address_title">Не удалось сохранить адрес</string>
+    <string name="failed_save_address_message">При сохранении адреса произошла ошибка. Пожалуйста, попробуйте снова.</string>
+    <string name="install_app_maps">Установите приложение карт (Google Maps, Яндекс.Карты или 2ГИС)</string>
+    <string name="open_address_in">Открыть адрес в...</string>
+    <string name="no_address_found">Адрес не найден</string>
+    <string name="add_address_message">Пожалуйста, добавьте адрес для доставки</string>
+
+    <!-- 10. Платежные карты -->
+    <string name="secure_payment">Безопасный платеж</string>
+    <string name="create_payment_card">Добавление платежной карты</string>
+    <string name="edit_payment_card">Редактирование данных карты</string>
+    <string name="save_payment_card">Сохранить карту</string>
+    <string name="payment_card_number">Номер карты</string>
+    <string name="payment_card_holder">Владелец карты</string>
+    <string name="payment_method">Способ оплаты</string>
+    <string name="successfully_save_payment_card_title">Карта успешно сохранена</string>
+    <string name="successfully_save_payment_card_message">Ваша карта была успешно сохранена!</string>
+    <string name="failed_save_payment_card_title">Не удалось сохранить карту</string>
+    <string name="failed_save_payment_card_message">При сохранении карты произошла ошибка. Пожалуйста, попробуйте снова.</string>
+    <string name="invalid_card_number_title">Некорректный номер карты</string>
+    <string name="invalid_card_number_message">Номер карты должен содержать ровно 16 цифр!</string>
+    <string name="no_payment_card_found">Платежная карта не найдена</string>
+    <string name="add_payment_card_message">Пожалуйста, добавьте платежную карту</string>
+
+    <!-- 11. Управление профилем -->
+    <string name="contact_info">Контактная информация</string>
+    <string name="phone">Телефон</string>
     <string name="edit_profile_success_title">Успешное изменение данных</string>
     <string name="edit_profile_success_message">Измененные данные были успешно сохранены!</string>
     <string name="edit_profile_failed_title">Не удалось изменить данные</string>
     <string name="edit_profile_failed_message">При изменении данных произошла ошибка. Пожалуйста, повторите попытку.</string>
-    <string name="first_name">Имя</string>
-    <string name="last_name">Фамилия</string>
-    <string name="save">Сохранить</string>
-    <string name="orders">Заказы</string>
-    <string name="notifications">Уведомления</string>
-    <string name="settings">Настройки</string>
-    <string name="sign_out">Выйти</string>
-    <string name="change_photo">Изменить фото профиля</string>
 
-    <!-- =============== [ Уведомления / Notifications ] =============== -->
+    <!-- 12. Уведомления -->
     <string name="new_notification">Новое</string>
     <string name="minutes_ago">минут назад</string>
     <string name="seconds_ago">секунд назад</string>
@@ -123,15 +166,24 @@
     <string name="recent">Недавний</string>
     <string name="yesterday">Вчера</string>
 
-    <!-- =============== [ Контактная информация / Contact ] =============== -->
-    <string name="contact_info">Контактная информация</string>
-    <string name="address">Адрес</string>
-    <string name="addresses">Адреса</string>
-    <string name="phone">Телефон</string>
-    <string name="payment_method">Способ оплаты</string>
-
-    <string name="failed_title">Произошла ошибка</string>
-    <string name="failed_message">Произошла неизвестная ошибка! Пожалуйста, обратитесь с проблемой к администратору!</string>
-    <string name="install_app_maps">Установите приложение карт (Google Maps, Яндекс.Карты или 2ГИС)</string>
-    <string name="open_address_in">Открыть адрес в...</string>
+    <!-- 13. Заказы -->
+    <string name="error_empty_cart">Корзина пуста</string>
+    <string name="error_products_not_found">Товары не найдены</string>
+    <string name="error_payment_card_not_selected">Платежная карта не выбрана</string>
+    <string name="error_delivery_address_not_selected">Адрес доставки не выбран</string>
+    <string name="error_total_amount_not_calculated">Не удалось рассчитать итоговую сумму</string>
+    <string name="error_order_id_not_generated">Не удалось получить ID заказа</string>
+    <string name="error_failed_to_add_order_items">Не удалось добавить товары к заказу</string>
+    <string name="error_failed_to_create_order">Не удалось создать заказ: %s</string>
+    <string name="error_user_not_authenticated">Пользователь не авторизован</string>
+    <string name="total_amount">Всего</string>
+    <string name="pay_now">Оплатить</string>
+    <string name="order_progress">Прогресс заказа</string>
+    <string name="status_new">Новый</string>
+    <string name="status_paid">Оплачен</string>
+    <string name="status_shipped">Доставлен</string>
+    <string name="status_completed">Завершен</string>
+    <string name="status_cancelled">Отменен</string>
+    <string name="order_number">№%1$s</string>
+    <string name="progress_percent">%1$d%%</string>
 </resources>

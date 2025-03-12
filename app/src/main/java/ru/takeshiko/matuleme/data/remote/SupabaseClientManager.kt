@@ -6,8 +6,6 @@ import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.realtime.Realtime
-import io.github.jan.supabase.realtime.realtime
 import io.github.jan.supabase.storage.Storage
 import io.github.jan.supabase.storage.storage
 
@@ -16,7 +14,6 @@ private constructor(private val supabaseClient: SupabaseClient) {
 
     val auth get() = supabaseClient.auth
     val storage get() = supabaseClient.storage
-    val realtime get() = supabaseClient.realtime
     val postgrest get() = supabaseClient.postgrest
 
     companion object {
@@ -31,7 +28,6 @@ private constructor(private val supabaseClient: SupabaseClient) {
                             createSupabaseClient(url, key) {
                                 install(Auth)
                                 install(Storage)
-                                install(Realtime)
                                 install(Postgrest)
                             }
                         )

@@ -24,6 +24,22 @@ class UserSearchQueryRepositoryImpl(
         }
     }
 
+    override suspend fun deleteQuery(userId: String, query: String): DataResult<String> {
+        return try {
+            postgrest
+                .from("user_search_queries")
+                .delete {
+                    filter {
+                        eq("user_id", userId)
+                        eq("query", query)
+                    }
+                }
+            DataResult.Success(query)
+        } catch (e: Exception) {
+            DataResult.Error(e.message ?: "Failed to delete user query!")
+        }
+    }
+
     override suspend fun getRecentQueriesByUser(
         userId: String,
         limit: Int

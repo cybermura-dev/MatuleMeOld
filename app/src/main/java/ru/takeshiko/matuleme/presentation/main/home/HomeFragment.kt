@@ -10,17 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.takeshiko.matuleme.R
-import ru.takeshiko.matuleme.data.adapters.CategoryCardShimmerAdapter
-import ru.takeshiko.matuleme.data.adapters.ProductCardShimmerAdapter
-import ru.takeshiko.matuleme.data.adapters.SaleCardShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.CategoryShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.ProductShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.SaleShimmerAdapter
 import ru.takeshiko.matuleme.data.local.AppPreferencesManager
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
-import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.FragmentHomeBinding
 import ru.takeshiko.matuleme.domain.models.result.DataResult
 import ru.takeshiko.matuleme.domain.models.result.StorageResult
 import ru.takeshiko.matuleme.presentation.category.CategoryActivity
-import ru.takeshiko.matuleme.presentation.category.ProductCardAdapter
+import ru.takeshiko.matuleme.presentation.category.ProductAdapter
 import ru.takeshiko.matuleme.presentation.category.ProductCategoryCardAdapter
 import ru.takeshiko.matuleme.presentation.menu.MenuActivity
 import ru.takeshiko.matuleme.presentation.product.ProductActivity
@@ -30,16 +29,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
-    private lateinit var shimmerCategoryAdapter: CategoryCardShimmerAdapter
-    private lateinit var shimmerPopularAdapter: ProductCardShimmerAdapter
-    private lateinit var shimmerSaleAdapter: SaleCardShimmerAdapter
-    private lateinit var toast: MaterialToast
+    private lateinit var shimmerCategoryAdapter: CategoryShimmerAdapter
+    private lateinit var shimmerPopularAdapter: ProductShimmerAdapter
+    private lateinit var shimmerSaleAdapter: SaleShimmerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
-
-        toast = MaterialToast(requireContext())
 
         val factory = HomeViewModelFactory(
             AppPreferencesManager.getInstance(),
@@ -48,9 +44,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
         with (binding) {
-            shimmerCategoryAdapter = CategoryCardShimmerAdapter(6)
-            shimmerPopularAdapter = ProductCardShimmerAdapter(2)
-            shimmerSaleAdapter = SaleCardShimmerAdapter(2)
+            shimmerCategoryAdapter = CategoryShimmerAdapter(6)
+            shimmerPopularAdapter = ProductShimmerAdapter(2)
+            shimmerSaleAdapter = SaleShimmerAdapter(2)
 
             ivHamburger.setOnClickListener {
                 val intent = Intent(requireContext(), MenuActivity::class.java)
@@ -151,7 +147,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 when (result) {
                     is DataResult.Success -> {
                         val popularProducts = result.data
-                        rvPopular.adapter = ProductCardAdapter(
+                        rvPopular.adapter = ProductAdapter(
                             products = popularProducts,
                             favorites = viewModel.favorites.value ?: emptySet(),
                             cartItems = viewModel.cartItems.value ?: emptySet(),
@@ -169,27 +165,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         )
                     }
 
-                    is DataResult.Error -> {
-                        toast.show(
-                            getString(R.string.failed_title),
-                            result.message,
-                            R.drawable.ic_cross
-                        )
-                    }
+                    is DataResult.Error -> Log.d(javaClass.name, result.message)
                 }
             }
 
             viewModel.favorites.observe(viewLifecycleOwner) { favorites ->
-                (rvPopular.adapter as? ProductCardAdapter)?.updateFavorites(favorites)
+                (rvPopular.adapter as? ProductAdapter)?.updateFavorites(favorites)
             }
 
             viewModel.cartItems.observe(viewLifecycleOwner) { cartItems ->
-                (rvPopular.adapter as? ProductCardAdapter)?.updateCartItems(cartItems)
+                (rvPopular.adapter as? ProductAdapter)?.updateCartItems(cartItems)
             }
 
             viewModel.salesResult.observe(viewLifecycleOwner) { result ->
                 when (result) {
-                    is StorageResult.Success -> rvSales.adapter = SaleCardAdapter(result.data)
+                    is StorageResult.Success -> rvSales.adapter = SaleAdapter(result.data)
                     is StorageResult.Error -> Log.d(javaClass.name, result.message)
                 }
             }

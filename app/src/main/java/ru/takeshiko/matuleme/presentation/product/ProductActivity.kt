@@ -69,12 +69,8 @@ class ProductActivity : AppCompatActivity() {
                         )
                         tvDescription.text = product.description
 
-                        val imageUrl = BuildConfig.SUPABASE_URL +
-                                "/storage/v1/object/public/products//" +
-                                product.imageUrl
-
-                        Glide
-                            .with(ivImage.context)
+                        val imageUrl = "${BuildConfig.SUPABASE_URL}/storage/v1/object/public/products/${product.imageUrl}"
+                        Glide.with(ivImage.context)
                             .load(imageUrl)
                             .into(ivImage)
 

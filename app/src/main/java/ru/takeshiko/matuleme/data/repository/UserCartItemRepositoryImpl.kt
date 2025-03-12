@@ -79,4 +79,15 @@ class UserCartItemRepositoryImpl(
             DataResult.Error(e.message ?: "Failed to remove cart item!")
         }
     }
+
+    override suspend fun removeAllByUserId(userId: String) : DataResult<String> {
+        return try {
+            postgrest
+                .from("user_cart_items")
+                .delete { filter { eq("user_id", userId) } }
+            DataResult.Success(userId)
+        } catch (e: Exception) {
+            DataResult.Error(e.message ?: "Failed to truncate user cart!")
+        }
+    }
 }

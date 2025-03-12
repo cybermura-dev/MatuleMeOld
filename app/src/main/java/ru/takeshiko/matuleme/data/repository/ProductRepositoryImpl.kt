@@ -1,6 +1,5 @@
 package ru.takeshiko.matuleme.data.repository
 
-import android.util.Log
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.domain.models.database.Product
 import ru.takeshiko.matuleme.domain.models.result.DataResult

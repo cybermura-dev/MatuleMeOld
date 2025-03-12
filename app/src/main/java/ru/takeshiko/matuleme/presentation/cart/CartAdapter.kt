@@ -2,7 +2,6 @@ package ru.takeshiko.matuleme.presentation.cart
 
 import android.graphics.Paint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -10,10 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.takeshiko.matuleme.BuildConfig
+import ru.takeshiko.matuleme.R
 import ru.takeshiko.matuleme.databinding.ItemCartBinding
 import ru.takeshiko.matuleme.domain.models.database.Product
 import ru.takeshiko.matuleme.domain.models.database.UserCartItem
-import ru.takeshiko.matuleme.R
 import java.util.Locale
 
 class CartAdapter(
@@ -27,7 +26,7 @@ class CartAdapter(
     inner class CartViewHolder(private val binding: ItemCartBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        private val swipeHandler: SwipeToRevealHandler = SwipeToRevealHandler(
+        private val swipeHandler: CartSwipeToRevealHandler = CartSwipeToRevealHandler(
             context = itemView.context,
             quantityPanel = itemView.findViewById(R.id.quantity_panel),
             deletePanel = itemView.findViewById(R.id.delete_panel),
@@ -69,22 +68,17 @@ class CartAdapter(
                     product.oldPrice * item.quantity
                 )
                 tvOldPrice.paintFlags = tvOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-
                 tvNewPrice.text = tvNewPrice.context.getString(
                     R.string.price_format,
                     product.newPrice * item.quantity
                 )
+                tvQuantity.text = String.format(Locale.getDefault(), "%d", item.quantity)
 
-                val imageUrl = BuildConfig.SUPABASE_URL +
-                        "/storage/v1/object/public/products//" +
-                        product.imageUrl
-
+                val imageUrl = "${BuildConfig.SUPABASE_URL}/storage/v1/object/public/products/${product.imageUrl}"
                 Glide
                     .with(ivProduct.context)
                     .load(imageUrl)
                     .into(ivProduct)
-
-                tvQuantity.text = String.format(Locale.getDefault(), "%d", item.quantity)
             }
         }
     }
@@ -112,7 +106,6 @@ class CartAdapter(
 
         cartItems = newCartItems
         products = newProducts
-
         diffResult.dispatchUpdatesTo(this)
     }
 

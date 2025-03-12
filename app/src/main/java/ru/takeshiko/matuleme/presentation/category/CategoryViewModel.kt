@@ -87,7 +87,7 @@ class CategoryViewModel (
                     is DataResult.Error -> Log.e(javaClass.name, "Error loading favorites!")
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -102,7 +102,7 @@ class CategoryViewModel (
                     is DataResult.Error -> Log.e(javaClass.name, "Error loading cart!")
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -122,7 +122,7 @@ class CategoryViewModel (
                     )
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadFavorites()
         }
@@ -144,7 +144,7 @@ class CategoryViewModel (
                     )
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadCartItems()
         }

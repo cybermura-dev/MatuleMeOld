@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -8,12 +9,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import ru.takeshiko.matuleme.R
-import ru.takeshiko.matuleme.data.adapters.CartCardShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.CartShimmerAdapter
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.ActivityCartBinding
 import ru.takeshiko.matuleme.domain.models.database.UserCartItem
 import ru.takeshiko.matuleme.domain.models.result.DataResult
+import ru.takeshiko.matuleme.presentation.checkout.CheckoutActivity
 
 class CartActivity : AppCompatActivity() {
 
@@ -21,7 +23,7 @@ class CartActivity : AppCompatActivity() {
     private val viewModel: CartViewModel by viewModels {
         CartViewModelFactory(SupabaseClientManager.getInstance())
     }
-    private lateinit var shimmerCartAdapter: CartCardShimmerAdapter
+    private lateinit var shimmerCartAdapter: CartShimmerAdapter
     private lateinit var cartAdapter: CartAdapter
     private lateinit var toast: MaterialToast
 
@@ -32,7 +34,7 @@ class CartActivity : AppCompatActivity() {
         with (binding) {
             setContentView(root)
 
-            shimmerCartAdapter = CartCardShimmerAdapter(6)
+            shimmerCartAdapter = CartShimmerAdapter(6)
 
             toast = MaterialToast(this@CartActivity)
 
@@ -43,7 +45,7 @@ class CartActivity : AppCompatActivity() {
             )
 
             btnCheckout.setOnClickListener {
-
+                startActivity(Intent(this@CartActivity, CheckoutActivity::class.java))
             }
 
             rvCartItems.apply {

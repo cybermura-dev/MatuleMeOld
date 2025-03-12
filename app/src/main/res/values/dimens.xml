@@ -4,4 +4,8 @@
     <dimen name="margin_bottom_default">40dp</dimen>
     <dimen name="btn_cart_size">56dp</dimen>
     <dimen name="swipe_offset">90dp</dimen>
+    <dimen name="notification_badge_size">16dp</dimen>
+    <dimen name="notification_badge_text_size">11sp</dimen>
+    <dimen name="cart_badge_size">16dp</dimen>
+    <dimen name="cart_badge_text_size">11sp</dimen>
 </resources>

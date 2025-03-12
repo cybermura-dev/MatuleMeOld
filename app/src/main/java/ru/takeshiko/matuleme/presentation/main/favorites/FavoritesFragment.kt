@@ -7,42 +7,40 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ru.takeshiko.matuleme.R
-import ru.takeshiko.matuleme.data.adapters.ProductCardShimmerAdapter
+import ru.takeshiko.matuleme.data.adapters.ProductShimmerAdapter
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
-import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.data.utils.setupAdaptiveGridLayout
 import ru.takeshiko.matuleme.databinding.FragmentFavoritesBinding
 import ru.takeshiko.matuleme.domain.models.result.DataResult
-import ru.takeshiko.matuleme.presentation.category.ProductCardAdapter
+import ru.takeshiko.matuleme.presentation.category.ProductAdapter
 import ru.takeshiko.matuleme.presentation.product.ProductActivity
 
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var viewModel: FavoritesViewModel
-    private lateinit var productAdapter: ProductCardAdapter
-    private lateinit var shimmerAdapter: ProductCardShimmerAdapter
-    private lateinit var toast: MaterialToast
+    private lateinit var productAdapter: ProductAdapter
+    private lateinit var shimmerAdapter: ProductShimmerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFavoritesBinding.bind(view)
 
-        toast = MaterialToast(requireContext())
-
         val factory = FavoritesViewModelFactory(SupabaseClientManager.getInstance())
         viewModel = ViewModelProvider(this, factory)[FavoritesViewModel::class.java]
 
         with (binding) {
-            shimmerAdapter = ProductCardShimmerAdapter(6)
+            shimmerAdapter = ProductShimmerAdapter(6)
 
-            rvProducts.setupAdaptiveGridLayout(
-                adapter = shimmerAdapter,
-                cardWidthDp = 160,
-                spacingDp = 16
-            )
+            rvProducts.apply {
+                setupAdaptiveGridLayout(
+                    adapter = shimmerAdapter,
+                    cardWidthDp = 160,
+                    spacingDp = 16
+                )
+            }
 
-            productAdapter = ProductCardAdapter(
+            productAdapter = ProductAdapter(
                 onAddToFavoriteClick = { productId ->
                     viewModel.toggleFavorite(productId)
                 },
@@ -98,9 +96,5 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         super.onResume()
         viewModel.loadFavorites()
         viewModel.loadCartItems()
-    }
-
-    private fun dpToPx(dp: Int): Int {
-        return (dp * resources.displayMetrics.density).toInt()
     }
 }

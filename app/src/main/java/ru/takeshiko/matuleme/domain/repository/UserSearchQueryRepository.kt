@@ -5,5 +5,6 @@ import ru.takeshiko.matuleme.domain.models.result.DataResult
 
 interface UserSearchQueryRepository {
     suspend fun logQuery(query: UserSearchQuery): DataResult<UserSearchQuery>
+    suspend fun deleteQuery(userId: String, query: String): DataResult<String>
     suspend fun getRecentQueriesByUser(userId: String, limit: Int): DataResult<List<UserSearchQuery>>
 }

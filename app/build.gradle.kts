@@ -20,8 +20,8 @@ android {
         applicationId = "ru.takeshiko.matuleme"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.1"
 
 
         buildConfigField("String", "SUPABASE_URL", "\"$supabaseUrl\"")
@@ -64,8 +64,13 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.security.crypto)
 
+    implementation(libs.shimmer)
+    implementation(libs.jsr305)
+    implementation(libs.glide)
+
     implementation(libs.android.material)
     implementation(libs.android.ktor.client)
+    implementation(libs.android.yookassa.sdk)
 
     implementation(platform(libs.supabase.bom))
     implementation(libs.supabase.auth.kt)
@@ -73,7 +78,4 @@ dependencies {
     implementation(libs.supabase.realtime.kt)
     implementation(libs.supabase.storage.kt)
 
-    implementation(libs.shimmer)
-    implementation(libs.jsr305)
-    implementation(libs.glide)
 }

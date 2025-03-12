@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.main.favorites
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -57,7 +58,7 @@ class FavoritesViewModel(
                     is DataResult.Error -> _favorites.value = emptySet()
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -70,7 +71,7 @@ class FavoritesViewModel(
                     is DataResult.Error -> _cartItems.value = emptySet()
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -90,7 +91,7 @@ class FavoritesViewModel(
                     )
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadFavorites()
         }
@@ -112,7 +113,7 @@ class FavoritesViewModel(
                     )
                 }
             } ?: run {
-                _productsResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
             loadCartItems()
         }

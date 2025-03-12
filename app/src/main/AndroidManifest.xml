@@ -29,13 +29,50 @@
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
+
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
 
         <activity
-            android:name=".presentation.deliveryaddresslist.DeliveryAddressListActivity"
+            android:name=".presentation.order.OrderActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.createpaymentcard.CreatePaymentCardActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.editpaymentcard.EditPaymentCardActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.paymentcards.PaymentCardsActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.editaddress.EditAddressActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.createaddress.CreateAddressActivity"
+            android:exported="false"
+            android:screenOrientation="locked"
+            tools:ignore="DiscouragedApi" />
+
+        <activity
+            android:name=".presentation.deliveryaddresses.DeliveryAddressesActivity"
             android:exported="false"
             android:screenOrientation="locked"
             tools:ignore="DiscouragedApi" />

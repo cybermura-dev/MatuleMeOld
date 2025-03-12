@@ -35,11 +35,30 @@ class UserDeliveryAddressRepositoryImpl(
         }
     }
 
-    override suspend fun updateAddress(userId: String, addressId: String, address: String): DataResult<UserDeliveryAddress> {
+    override suspend fun updateAddress(userId: String, addressId: String, address: UserDeliveryAddress): DataResult<UserDeliveryAddress> {
         return try {
             val result = postgrest
                 .from("user_delivery_addresses")
-                .update({ set("address", address) }) { select(); filter { eq("id", addressId) } }
+                .update(address) {
+                    filter { eq("id", addressId) }
+                    select()
+                }
+                .decodeSingle<UserDeliveryAddress>()
+            DataResult.Success(result)
+        } catch (e: Exception) {
+            DataResult.Error(e.message ?: "Failed to update user delivery addresses!")
+        }
+    }
+
+    override suspend fun updateAddressWithReset(userId: String, addressId: String, address: UserDeliveryAddress): DataResult<UserDeliveryAddress> {
+        return try {
+            resetDefaultAddress(userId)
+            val result = postgrest
+                .from("user_delivery_addresses")
+                .update(address) {
+                    filter { eq("id", addressId) }
+                    select()
+                }
                 .decodeSingle<UserDeliveryAddress>()
             DataResult.Success(result)
         } catch (e: Exception) {
@@ -60,6 +79,18 @@ class UserDeliveryAddressRepositoryImpl(
             DataResult.Success(addressId)
         } catch (e: Exception) {
             DataResult.Error(e.message ?: "Failed to remove user delivery addresses!")
+        }
+    }
+
+    override suspend fun resetDefaultAddress(userId: String): DataResult<Unit> {
+        return try {
+            postgrest
+                .from("user_delivery_addresses")
+                .update({ set("is_default", false) })
+                { filter { eq("user_id", userId) } }
+            DataResult.Success(Unit)
+        } catch (e: Exception) {
+            DataResult.Error(e.message ?: "Failed to reset default address!")
         }
     }
 }

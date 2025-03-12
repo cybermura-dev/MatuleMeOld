@@ -8,15 +8,19 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ru.takeshiko.matuleme.R
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.FragmentProfileBinding
 import ru.takeshiko.matuleme.domain.models.result.DataResult
-import ru.takeshiko.matuleme.presentation.deliveryaddresslist.DeliveryAddressListActivity
+import ru.takeshiko.matuleme.presentation.deliveryaddresses.DeliveryAddressesActivity
+import ru.takeshiko.matuleme.presentation.paymentcards.PaymentCardsActivity
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -64,10 +68,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                             val phone = userMetadata["phone_number"]?.toString()?.trim('"') ?: ""
                             etPhone.setText(phone)
 
-                            val avatarUrl = viewModel.getAvatarFromUrl(result.data.id)
+                            val avatarUrl = viewModel.getAvatarFromUrlDefault(result.data.id)
                             Glide
                                 .with(requireContext())
-                                .load(avatarUrl)
+                                .load("$avatarUrl?timestamp=${System.currentTimeMillis()}")
+                                .skipMemoryCache(true)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .placeholder(R.drawable.ic_default_avatar)
                                 .error(R.drawable.ic_default_avatar)
                                 .centerCrop()
@@ -87,6 +93,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             viewModel.defaultAddress.observe(viewLifecycleOwner) { address ->
                 cardAddress.etAddress.setText(address)
+                cardAddress.tilAddress.startIconDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_marker)
+            }
+
+            viewModel.defaultPaymentCard.observe(viewLifecycleOwner) { paymentCard ->
+                cardPaymentCard.etPaymentCard.setText(paymentCard)
+                cardPaymentCard.tilPaymentCard.startIconDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_visa_card)
             }
 
             tilFirstName.setEndIconOnClickListener {
@@ -144,7 +156,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             cardAddress.tilAddress.setEndIconOnClickListener {
-                startActivity(Intent(requireContext(), DeliveryAddressListActivity::class.java))
+                startActivity(Intent(requireContext(), DeliveryAddressesActivity::class.java))
             }
 
             cardAddress.ivMap.setOnClickListener {
@@ -153,6 +165,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     openAddressInMaps(address)
                 }
             }
+
+            cardPaymentCard.tilPaymentCard.setEndIconOnClickListener {
+                startActivity(Intent(requireContext(), PaymentCardsActivity::class.java))
+            }
         }
     }
 
@@ -160,21 +176,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onResume()
         viewModel.loadUserData()
         viewModel.loadUserDefaultAddress()
+        viewModel.loadUserDefaultPaymentCard()
     }
 
     private fun openAddressInMaps(address: String) {
         val encodedAddress = java.net.URLEncoder.encode(address, "UTF-8")
 
         val googleMapsIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("https://www.google.com/maps/search/?api=1&query=$encodedAddress")
+            data = "https://www.google.com/maps/search/?api=1&query=$encodedAddress".toUri()
         }
 
         val yandexMapsIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("yandexmaps://maps.yandex.ru/?text=$encodedAddress")
+            data = "yandexmaps://maps.yandex.ru/?text=$encodedAddress".toUri()
         }
 
         val dgisIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse("dgis://2gis.ru/query=$encodedAddress")
+            data = "dgis://2gis.ru/query=$encodedAddress".toUri()
         }
 
         val chooser = Intent.createChooser(googleMapsIntent, getString(R.string.open_address_in)).apply {
@@ -194,10 +211,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun uploadAvatar(uri: Uri) {
         val inputStream = requireContext().contentResolver.openInputStream(uri) ?: return
-        val byteArray = inputStream.readBytes()
         inputStream.close()
 
-        viewModel.uploadAvatar(byteArray)
+        viewModel.uploadAvatar(requireContext(), uri)
         toast.show(
             getString(R.string.edit_profile_success_title),
             getString(R.string.edit_profile_success_message),

@@ -1,5 +1,6 @@
 package ru.takeshiko.matuleme.presentation.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,11 +25,17 @@ class SearchViewModel(
         viewModelScope.launch {
             supabaseClientManager.auth.currentUserOrNull()?.id?.let { userId ->
                 when (val result = userSearchQueryRepository.getRecentQueriesByUser(userId, 10)) {
-                    is DataResult.Success -> _searchQueriesResult.value = DataResult.Success(result.data)
+                    is DataResult.Success -> {
+                        val uniqueQueries = result.data
+                            .distinctBy { it.query.lowercase() }
+                            .sortedByDescending { it.searchedAt }
+
+                        _searchQueriesResult.value = DataResult.Success(uniqueQueries)
+                    }
                     is DataResult.Error -> _searchQueriesResult.value = DataResult.Error(result.message)
                 }
             } ?: run {
-                _searchQueriesResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -43,7 +50,20 @@ class SearchViewModel(
                 )
                 userSearchQueryRepository.logQuery(queryConstructor)
             } ?: run {
-                _searchQueriesResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
+            }
+        }
+    }
+
+    fun deleteQuery(query: String) {
+        viewModelScope.launch {
+            supabaseClientManager.auth.currentUserOrNull()?.id?.let { userId ->
+                when (val result = userSearchQueryRepository.deleteQuery(userId, query)) {
+                    is DataResult.Success -> loadSearchQueries()
+                    is DataResult.Error -> Log.d(javaClass.name, result.message)
+                }
+            } ?: run {
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }

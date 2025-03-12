@@ -129,7 +129,6 @@
             android:layout_height="wrap_content"
             android:textSize="32sp"
             android:textColor="@color/text_color"
-            android:fontFamily="@font/raleway_bold"
             android:ellipsize="end"
             app:layout_constraintBottom_toTopOf="@id/guideline_image"
             app:layout_constraintEnd_toStartOf="@id/guideline_end"

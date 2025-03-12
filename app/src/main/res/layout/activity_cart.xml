@@ -119,7 +119,6 @@
                 android:textSize="18sp"
                 android:textAlignment="textEnd"
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/raleway_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_center"
                 app:layout_constraintTop_toTopOf="parent"
@@ -149,7 +148,6 @@
                 android:textSize="18sp"
                 android:textAlignment="textEnd"
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/raleway_semibold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_center"
                 app:layout_constraintTop_toBottomOf="@id/tv_sum" />
@@ -188,7 +186,6 @@
                 android:text="@string/loading"
                 android:textSize="18sp"
                 android:textAlignment="textEnd"
-                android:fontFamily="@font/raleway_semibold"
                 android:textColor="@color/accent_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guideline_center"

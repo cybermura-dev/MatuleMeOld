@@ -30,17 +30,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:id="@+id/btn_cart"
+    <FrameLayout
         android:layout_width="@dimen/btn_cart_size"
         android:layout_height="@dimen/btn_cart_size"
-        android:adjustViewBounds="true"
-        android:src="@drawable/btn_basket"
         app:layout_constraintBottom_toBottomOf="@id/navigation_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/navigation_bar"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.1">
+
+        <ImageView
+            android:id="@+id/btn_cart"
+            android:layout_width="@dimen/btn_cart_size"
+            android:layout_height="@dimen/btn_cart_size"
+            android:adjustViewBounds="true"
+            android:src="@drawable/btn_basket" />
+
+        <TextView
+            android:id="@+id/cart_badge"
+            android:layout_width="@dimen/cart_badge_size"
+            android:layout_height="@dimen/cart_badge_size"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_red_circle"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/cart_badge_text_size" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/btn_home"
@@ -68,18 +86,38 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_left"
         app:layout_constraintWidth_percent="0.08"/>
 
-    <ImageView
-        android:id="@+id/btn_notifications"
+    <FrameLayout
+        android:id="@+id/fl_btn_notifications"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_notification"
-        app:tint="@color/sub_text_dark_color"
         app:layout_constraintTop_toTopOf="@id/navigation_bar"
         app:layout_constraintBottom_toBottomOf="@id/navigation_bar"
         app:layout_constraintStart_toEndOf="@id/guideline_right"
         app:layout_constraintEnd_toStartOf="@id/btn_profile"
-        app:layout_constraintWidth_percent="0.08"/>
+        app:layout_constraintWidth_percent="0.08">
+
+        <ImageView
+            android:id="@+id/btn_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_notification"
+            app:tint="@color/sub_text_dark_color"/>
+
+        <TextView
+            android:id="@+id/notification_badge"
+            android:layout_width="@dimen/notification_badge_size"
+            android:layout_height="@dimen/notification_badge_size"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_red_circle"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/notification_badge_text_size" />
+    </FrameLayout>
+
 
     <ImageView
         android:id="@+id/btn_profile"
@@ -90,7 +128,7 @@
         app:tint="@color/sub_text_dark_color"
         app:layout_constraintTop_toTopOf="@id/navigation_bar"
         app:layout_constraintBottom_toBottomOf="@id/navigation_bar"
-        app:layout_constraintStart_toEndOf="@id/btn_notifications"
+        app:layout_constraintStart_toEndOf="@id/fl_btn_notifications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.08"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

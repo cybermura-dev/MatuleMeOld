@@ -9,6 +9,7 @@
     <color name="text_color">#FF2B2B2B</color>
     <color name="hint_color">#FF6A6A6A</color>
     <color name="error_color">#FFF87265</color>
+    <color name="success_color">#FF4CAF50</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

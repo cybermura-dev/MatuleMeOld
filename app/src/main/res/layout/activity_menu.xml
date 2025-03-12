@@ -44,6 +44,13 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_data"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -67,6 +74,7 @@
         app:shapeAppearanceOverlay="@style/CircularImageView" />
 
     <ImageView
+        android:id="@+id/iv_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/img_explore"
@@ -82,6 +90,7 @@
         android:fontFamily="@font/raleway_semibold"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:ellipsize="end"
         app:layout_constraintBottom_toTopOf="@id/guideline_data"
         app:layout_constraintEnd_toStartOf="@id/guideline_center"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
@@ -89,77 +98,81 @@
         tools:text="Иван Иванов" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_cart"
+        android:id="@+id/cl_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@id/guideline_center"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toTopOf="@id/guideline_data">
 
-        <ImageView
-            android:id="@+id/iv_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_basket"
-            app:tint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_cart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+        <com.google.android.material.chip.Chip
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/search_title"
             android:fontFamily="@font/raleway_regular"
             android:textColor="@color/white"
             android:textSize="18sp"
+            app:iconEndPadding="12dp"
+            app:chipIcon="@drawable/ic_search"
+            app:chipIconTint="@color/white"
+            app:chipBackgroundColor="@color/accent_color"
+            app:chipCornerRadius="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_cart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_center"
+        app:layout_constraintStart_toEndOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/cl_search">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/btn_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/cart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_cart"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:fontFamily="@font/raleway_regular"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:iconEndPadding="12dp"
+            app:chipIcon="@drawable/ic_basket"
+            app:chipIconTint="@color/white"
+            app:chipBackgroundColor="@color/accent_color"
+            app:chipCornerRadius="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_orders"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toStartOf="@id/guideline_center"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/cl_cart">
 
-        <ImageView
-            android:id="@+id/iv_orders"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_orders"
-            app:tint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_orders"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+        <com.google.android.material.chip.Chip
+            android:id="@+id/btn_orders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/orders"
             android:fontFamily="@font/raleway_regular"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="@string/orders"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_orders"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:iconEndPadding="12dp"
+            app:chipIcon="@drawable/ic_orders"
+            app:chipIconTint="@color/white"
+            app:chipBackgroundColor="@color/accent_color"
+            app:chipCornerRadius="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:background="#3BF7F7F9"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
@@ -175,28 +188,18 @@
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintTop_toBottomOf="@id/divider">
 
-        <ImageView
-            android:id="@+id/iv_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_logout"
-            app:tint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_logout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+        <com.google.android.material.chip.Chip
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/sign_out"
             android:fontFamily="@font/raleway_regular"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="@string/sign_out"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_logout"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:iconEndPadding="12dp"
+            app:chipIcon="@drawable/ic_logout"
+            app:chipIconTint="@color/white"
+            app:chipBackgroundColor="@color/accent_color"
+            app:chipCornerRadius="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,6 @@ import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.ActivityPasswordResetBinding
 import ru.takeshiko.matuleme.domain.models.result.AuthResult
 import ru.takeshiko.matuleme.presentation.inputpassword.InputPasswordActivity
-import ru.takeshiko.matuleme.presentation.login.LoginActivity
-import ru.takeshiko.matuleme.presentation.otpverify.OTPVerifyActivity
 
 class PasswordResetActivity : AppCompatActivity() {
 

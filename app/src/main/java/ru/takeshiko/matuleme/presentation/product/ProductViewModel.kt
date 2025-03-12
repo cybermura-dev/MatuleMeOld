@@ -70,7 +70,7 @@ class ProductViewModel(
                     is DataResult.Error -> _isInFavorites.value = false
                 }
             } ?: run {
-                _productResult.value = DataResult.Error("User not authenticated!")
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -87,6 +87,8 @@ class ProductViewModel(
                     is DataResult.Success -> _isInFavorites.value = true
                     is DataResult.Error -> Log.d(javaClass.name, result.message)
                 }
+            } ?: run {
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -98,6 +100,8 @@ class ProductViewModel(
                     is DataResult.Success -> _isInFavorites.value = false
                     is DataResult.Error -> Log.d(javaClass.name, result.message)
                 }
+            } ?: run {
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
@@ -115,6 +119,8 @@ class ProductViewModel(
                     is DataResult.Success -> _isInCart.value = true
                     is DataResult.Error -> Log.d(javaClass.name, result.message)
                 }
+            } ?: run {
+                Log.d(javaClass.name, "User not authenticated!")
             }
         }
     }
