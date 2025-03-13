@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import io.github.jan.supabase.auth.user.UserInfo
 import ru.takeshiko.matuleme.R
 import ru.takeshiko.matuleme.data.local.AppPreferencesManager
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
@@ -31,7 +32,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
-
 
         with (binding) {
             setContentView(root)
@@ -59,6 +59,16 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.registrationResult.observe(this@RegisterActivity) { result ->
                 when (result) {
                     is AuthResult.Success -> {
+                        val data = result.data!!
+                        if (data.emailConfirmedAt != null) {
+                            toast.show(
+                                getString(R.string.failed_title),
+                                getString(R.string.email_already_registered),
+                                R.drawable.ic_cross
+                            )
+                            return@observe
+                        }
+
                         toast.show(
                             getString(R.string.successfully_register_title),
                             getString(R.string.successfully_register_message),
@@ -72,7 +82,6 @@ class RegisterActivity : AppCompatActivity() {
                             }
                         )
                     }
-
                     is AuthResult.Error -> {
                         toast.show(
                             getString(R.string.failed_title),
