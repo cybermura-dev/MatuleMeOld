@@ -104,7 +104,6 @@
         <activity
             android:name=".presentation.orders.OrdersActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="locked"
             tools:ignore="DiscouragedApi" />
 
