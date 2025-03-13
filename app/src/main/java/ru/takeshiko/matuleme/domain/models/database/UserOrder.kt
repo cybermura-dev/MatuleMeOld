@@ -15,7 +15,7 @@ data class UserOrder(
     @SerialName("card_holder") val cardHolder: String,
     @SerialName("address") val address: String,
     @SerialName("total_amount") val totalAmount: Double,
-    @SerialName("status") val status: OrderStatus,
+    @SerialName("status") var status: OrderStatus,
     @SerialName("created_at") val createdAt: Instant,
     @SerialName("updated_at") val updatedAt: Instant
 )

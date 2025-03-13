@@ -30,6 +30,13 @@
         app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -54,7 +61,20 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_top" />
+        app:layout_constraintTop_toBottomOf="@id/guideline_top"
+        tools:text="№23712292795591" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_order_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/accent_color"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_number"
+        tools:text="NEW" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
@@ -62,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_content"
         app:layout_constraintStart_toEndOf="@id/guideline_start"
         app:layout_constraintEnd_toStartOf="@id/guideline_end"
-        app:layout_constraintBottom_toTopOf="@id/guideline_bottom">
+        app:layout_constraintBottom_toTopOf="@id/guideline_button">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -76,8 +96,33 @@
                 android:id="@+id/rv_order_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_checkout"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/cancel_order"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/guideline_button"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+        style="@style/ButtonStyle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_confirm"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/confirm_order"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/guideline_button"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
+        style="@style/ButtonStyle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import ru.takeshiko.matuleme.databinding.ActivityCheckoutBinding
 import ru.takeshiko.matuleme.domain.models.result.DataResult
 import ru.takeshiko.matuleme.presentation.createaddress.CreateAddressActivity
 import ru.takeshiko.matuleme.presentation.createpaymentcard.CreatePaymentCardActivity
-import ru.takeshiko.matuleme.presentation.main.MainActivity
+import ru.takeshiko.matuleme.presentation.order.OrderActivity
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -65,14 +65,7 @@ class CheckoutActivity : AppCompatActivity() {
                             itemCheckout.tvPhone.text = phone
                         }
                     }
-                    is DataResult.Error -> {
-                        toast.show(
-                            getString(R.string.failed_title),
-                            result.message,
-                            R.drawable.ic_cross
-                        )
-                        Log.d(javaClass.name, result.message)
-                    }
+                    is DataResult.Error -> Log.d(javaClass.name, result.message)
                 }
             }
 
@@ -111,7 +104,9 @@ class CheckoutActivity : AppCompatActivity() {
                             getString(R.string.order_success_message),
                             R.drawable.ic_basket,
                             onDismiss = {
-                                startActivity(Intent(this@CheckoutActivity, MainActivity::class.java))
+                                startActivity(Intent(this@CheckoutActivity, OrderActivity::class.java).apply {
+                                    putExtra("order_id", result.data.id)
+                                })
                                 finish()
                             }
                         )
@@ -122,6 +117,7 @@ class CheckoutActivity : AppCompatActivity() {
                             result.message,
                             R.drawable.ic_cross
                         )
+                        Log.d(javaClass.name, result.message)
                     }
                 }
             }

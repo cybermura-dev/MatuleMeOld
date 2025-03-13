@@ -59,9 +59,11 @@ class MainViewModel(
     fun startNotificationsPolling() {
         viewModelScope.launch {
             while (isActive) {
-                loadUnreadNotifications()
-                loadCartItems()
-                delay(10_000)
+                if (supabaseClientManager.auth.currentSessionOrNull() != null) {
+                    loadUnreadNotifications()
+                    loadCartItems()
+                    delay(10_000)
+                }
             }
         }
     }

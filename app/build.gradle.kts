@@ -23,7 +23,6 @@ android {
         versionCode = 3
         versionName = "1.1"
 
-
         buildConfigField("String", "SUPABASE_URL", "\"$supabaseUrl\"")
         buildConfigField("String", "SUPABASE_KEY", "\"$supabaseKey\"")
     }
@@ -77,5 +76,4 @@ dependencies {
     implementation(libs.supabase.postgrest.kt)
     implementation(libs.supabase.realtime.kt)
     implementation(libs.supabase.storage.kt)
-
 }

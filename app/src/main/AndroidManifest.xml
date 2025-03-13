@@ -19,7 +19,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.MatuleMe"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         tools:targetApi="31">
@@ -104,6 +104,7 @@
         <activity
             android:name=".presentation.orders.OrdersActivity"
             android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="locked"
             tools:ignore="DiscouragedApi" />
 
@@ -127,18 +128,6 @@
 
         <activity
             android:name=".presentation.main.MainActivity"
-            android:exported="false"
-            android:screenOrientation="locked"
-            tools:ignore="DiscouragedApi" />
-
-        <activity
-            android:name=".presentation.inputpassword.InputPasswordActivity"
-            android:exported="false"
-            android:screenOrientation="locked"
-            tools:ignore="DiscouragedApi" />
-
-        <activity
-            android:name=".presentation.passwordreset.PasswordResetActivity"
             android:exported="false"
             android:screenOrientation="locked"
             tools:ignore="DiscouragedApi" />

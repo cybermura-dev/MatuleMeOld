@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ru.takeshiko.matuleme.R
 import ru.takeshiko.matuleme.data.adapters.OrderShimmerAdapter
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
+import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.ActivityOrdersBinding
+import ru.takeshiko.matuleme.domain.models.database.OrderStatus
 import ru.takeshiko.matuleme.domain.models.result.DataResult
 import ru.takeshiko.matuleme.presentation.order.OrderActivity
 
@@ -23,6 +25,7 @@ class OrdersActivity : AppCompatActivity() {
     }
     private lateinit var shimmerAdapter: OrderShimmerAdapter
     private lateinit var adapter: OrderAdapter
+    private lateinit var toast: MaterialToast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class OrdersActivity : AppCompatActivity() {
 
         with (binding) {
             setContentView(root)
+
+            toast = MaterialToast(this@OrdersActivity)
 
             shimmerAdapter = OrderShimmerAdapter(6)
             adapter = OrderAdapter(
@@ -40,6 +45,12 @@ class OrdersActivity : AppCompatActivity() {
                     })
                 },
                 onPayClickListener = { order ->
+                    viewModel.updateOrderStatus(order, OrderStatus.PAID)
+                    toast.show(
+                        getString(R.string.successfully_paid_title),
+                        getString(R.string.successfully_paid_message),
+                        R.drawable.ic_checkmark
+                    )
                 }
             )
 

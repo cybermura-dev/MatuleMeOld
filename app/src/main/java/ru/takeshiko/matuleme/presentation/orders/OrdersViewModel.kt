@@ -8,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.takeshiko.matuleme.data.remote.SupabaseClientManager
 import ru.takeshiko.matuleme.data.repository.UserOrderRepositoryImpl
+import ru.takeshiko.matuleme.domain.models.database.OrderStatus
 import ru.takeshiko.matuleme.domain.models.database.UserOrder
-import ru.takeshiko.matuleme.domain.models.database.UserPaymentCard
 import ru.takeshiko.matuleme.domain.models.result.DataResult
 
 class OrdersViewModel(
@@ -30,6 +30,16 @@ class OrdersViewModel(
                 }
             } ?: run {
                 Log.d(javaClass.name, "User not authenticated!")
+            }
+        }
+    }
+
+    fun updateOrderStatus(order: UserOrder, status: OrderStatus) {
+        viewModelScope.launch {
+            order.status = status
+            when (val result = userOrderRepository.updateOrder(order.id!!, order)) {
+                is DataResult.Success -> loadUserOrders()
+                is DataResult.Error -> _userOrdersResult.value = DataResult.Error(result.message)
             }
         }
     }

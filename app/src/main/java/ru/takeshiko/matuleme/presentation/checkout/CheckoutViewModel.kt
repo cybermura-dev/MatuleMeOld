@@ -103,8 +103,8 @@ class CheckoutViewModel(
                         val defaultPaymentCardEntry = result.data.find { it.isDefault }
                         _defaultPaymentCardObject.value = defaultPaymentCardEntry
                         _defaultPaymentCard.value = defaultPaymentCardEntry?.let { entry ->
-                            val numberStr = entry.number.toString().padStart(16, '0')
-                            "**** **** **** " + numberStr.takeLast(4)
+                            val numberStr = entry.number.toString().padStart(16, '0').takeLast(4)
+                            "**** **** **** $numberStr"
                         } ?: ""
                     }
                     is DataResult.Error -> {
@@ -251,7 +251,7 @@ class CheckoutViewModel(
     private fun clearCart(userId: String) {
         viewModelScope.launch {
             when (val result = userCartItemRepository.removeAllByUserId(userId)) {
-                is DataResult.Success -> Log.d(javaClass.name, "Cart for user $userId has been successfully truncated!")
+                is DataResult.Success -> {}
                 is DataResult.Error -> Log.d(javaClass.name, result.message)
             }
         }

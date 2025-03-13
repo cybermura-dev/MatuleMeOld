@@ -6,6 +6,7 @@
     <string name="all"><u>See all</u></string>
     <string name="open">Open</string>
     <string name="price_format">₽%1$.2f</string>
+    <string name="quantity_format">Quantity: %d pcs</string>
     <string name="product_info">Product Info</string>
     <string name="best_seller">BEST SELLER</string>
     <string name="loading">Loading</string>
@@ -186,4 +187,12 @@
     <string name="status_cancelled">Cancelled</string>
     <string name="order_number">№%1$s</string>
     <string name="progress_percent">%1$d%%</string>
+    <string name="successfully_paid_title">Successful Payment</string>
+    <string name="successfully_paid_message">You have successfully paid for your order!</string>
+    <string name="cancel_order">Cancel order</string>
+    <string name="confirm_order">Confirm order</string>
+    <string name="successfully_cancelled_order_title">Order Cancelled</string>
+    <string name="successfully_cancelled_order_message">Your order has been successfully cancelled.</string>
+    <string name="successfully_confirmed_order_title">Order Confirmed</string>
+    <string name="successfully_confirmed_order_message">Your order has been successfully confirmed.</string>
 </resources>
