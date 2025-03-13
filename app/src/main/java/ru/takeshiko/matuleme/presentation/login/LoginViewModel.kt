@@ -16,8 +16,8 @@ class LoginViewModel(
     supabaseClientManager: SupabaseClientManager
 ) : ViewModel() {
 
-    private val _loginResult = MutableLiveData<AuthResult<Any>>()
-    val loginResult: LiveData<AuthResult<Any>> = _loginResult
+    private val _loginResult = MutableLiveData<AuthResult<Unit>>()
+    val loginResult: LiveData<AuthResult<Unit>> = _loginResult
 
     private val authRepository = AuthRepositoryImpl(supabaseClientManager)
 
@@ -34,8 +34,8 @@ class LoginViewModel(
             }
 
             when (val result = authRepository.login(email, password)) {
-                is AuthResult.Success -> _loginResult.postValue(result)
-                is AuthResult.Error -> _loginResult.postValue(result)
+                is AuthResult.Success -> _loginResult.value = AuthResult.Success(result.data)
+                is AuthResult.Error -> _loginResult.value = AuthResult.Error(result.message)
             }
         }
     }
