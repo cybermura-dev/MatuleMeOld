@@ -3,7 +3,6 @@ package ru.takeshiko.matuleme.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
-import android.util.Patterns
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -16,7 +15,6 @@ import ru.takeshiko.matuleme.data.utils.MaterialToast
 import ru.takeshiko.matuleme.databinding.ActivityLoginBinding
 import ru.takeshiko.matuleme.domain.models.result.AuthResult
 import ru.takeshiko.matuleme.presentation.main.MainActivity
-import ru.takeshiko.matuleme.presentation.passwordreset.PasswordResetActivity
 import ru.takeshiko.matuleme.presentation.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -41,10 +39,6 @@ class LoginActivity : AppCompatActivity() {
 
             tilPassword.setEndIconOnClickListener {
                 togglePasswordVisibility(tilPassword, etPassword)
-            }
-
-            tvForgotPassword.setOnClickListener {
-                handlePasswordReset()
             }
 
             tvRegisterPrompt.setOnClickListener {
@@ -75,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
                             }
                         )
                     }
-
                     is AuthResult.Error -> {
                         toast.show(
                             getString(R.string.failed_title),
@@ -85,26 +78,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
-    }
-
-    private fun handlePasswordReset() {
-        with (binding) {
-            val email = etEmail.text.toString().trim()
-            if (email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                toast.show(
-                    getString(R.string.failed_title),
-                    getString(R.string.write_email),
-                    R.drawable.ic_cross
-                )
-                return
-            }
-
-            val intent = Intent(this@LoginActivity, PasswordResetActivity::class.java).apply {
-                putExtra("email", email)
-            }
-            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-            startActivity(intent)
         }
     }
 
