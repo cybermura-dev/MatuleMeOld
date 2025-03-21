@@ -295,8 +295,7 @@ The application interacts with the following Supabase resources:
 suspend fun getProductsByCategory(categoryId: String): List<Product> {
     return supabaseClient
         .from("products")
-        .select("*")
-        .eq("category_id", categoryId)
+        .select("*") { filter { eq("category_id", categoryId) }
         .order("created_at", OrderDirection.DESCENDING)
         .execute()
         .data
