@@ -6,7 +6,6 @@
 - [Features](#features)
 - [Technologies](#technologies)
 - [Architecture](#architecture)
-- [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Project Structure](#project-structure)
@@ -168,22 +167,6 @@ The application uses Koin for dependency injection, which provides:
 - Module organization by feature
 - Testability through module overrides
 
-## Screenshots
-
-<div align="center">
-  <img src="https://via.placeholder.com/200x400?text=Login+Screen" alt="Login Screen" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Home+Screen" alt="Home Screen" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Product+Details" alt="Product Details" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Cart" alt="Shopping Cart" width="200"/>
-</div>
-
-<div align="center">
-  <img src="https://via.placeholder.com/200x400?text=Checkout" alt="Checkout" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Orders" alt="Order History" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Profile" alt="User Profile" width="200"/>
-  <img src="https://via.placeholder.com/200x400?text=Categories" alt="Categories" width="200"/>
-</div>
-
 ## Installation
 
 ### Prerequisites
@@ -197,7 +180,7 @@ The application uses Koin for dependency injection, which provides:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/MatuleMe.git
+   git clone https://github.com/takeshikodev/MatuleMe.git
    cd MatuleMe
    ```
 
@@ -240,7 +223,6 @@ Create a `local.properties` file with:
 ```properties
 supabase.url=your_supabase_url
 supabase.key=your_supabase_key
-maps.api.key=your_google_maps_api_key
 ```
 
 ### Build Variants
