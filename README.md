@@ -1,8 +1,5 @@
 # MatuleMe
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/takeshikodev/MatuleMe)
-![Downloads](https://img.shields.io/github/downloads/takeshikodev/MatuleMe/total)
-
 ## Table of Contents
 
 - [Overview](#overview)
