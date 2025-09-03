@@ -1,4 +1,4 @@
-# MatuleMe
+# MatuleMe (Down)
 
 ## Table of Contents
 
@@ -180,7 +180,7 @@ The application uses Koin for dependency injection, which provides:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/cybermura-dev/MatuleMe.git
+   git clone https://github.com/cybermura-dev/MatuleMeDown.git
    cd MatuleMe
    ```
 
