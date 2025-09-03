@@ -180,7 +180,7 @@ The application uses Koin for dependency injection, which provides:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/takeshikodev/MatuleMe.git
+   git clone https://github.com/cybermura-dev/MatuleMe.git
    cd MatuleMe
    ```
 
@@ -365,4 +365,4 @@ Follow the project's code style:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2025 Takeshiko 
+Copyright (c) 2025 cybermura
